@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 public class InputValidation {
 
     public static boolean isCurrencyValid(String currency) {
-        return currency != null && currency.length() == 3;
+        return currency != null && currency.length() == 3 && currency.chars().allMatch(Character::isLetter);
     }
 
     // I am not sure if this is the best way to check for currency safety
