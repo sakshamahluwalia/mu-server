@@ -5,6 +5,8 @@ import io.muserver.MuResponse;
 
 import java.util.Map;
 
+import javax.ws.rs.BadRequestException;
+
 import org.hsbc.service.paymentService.PaymentService;
 import org.hsbc.utils.inputValidation.InputValidation;
 import org.hsbc.service.httpResponseService.HttpResponseService;
@@ -16,6 +18,21 @@ public class PaymentServiceController {
 
     private PaymentService paymentService = new PaymentService();
     private HttpResponseService httpResponseService = new HttpResponseService();
+
+
+    public void handleResetTransactions(MuRequest request, MuResponse response, Map<String, String> pathParams) {
+
+        try {
+            paymentService.resetPayments();
+        } catch (BadRequestException e) {
+            httpResponseService.createAndSendResponse(e.getMessage(), 400, response);
+            return;
+        } catch (Exception e) {
+            httpResponseService.createAndSendResponse("An error occurred while resetting the transactions", 500, response);
+            return;
+        }
+        httpResponseService.createAndSendResponse("Transactions reset", 200, response);
+    }
 
     public void handlePayment(MuRequest request, MuResponse response, Map<String, String> pathParams) {
 

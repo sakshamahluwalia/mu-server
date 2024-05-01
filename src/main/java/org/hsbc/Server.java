@@ -15,6 +15,7 @@ public class Server {
     public void startServer() {
         MuServer server = MuServerBuilder.httpServer()
                 .withHttpPort(3000)
+                .addHandler(Method.GET, "/reset-transactions", paymentServiceController::handleResetTransactions)
                 .addHandler(Method.POST, "/payment/{currencyCode}/{amount}", paymentServiceController::handlePayment)
                 .start();
 

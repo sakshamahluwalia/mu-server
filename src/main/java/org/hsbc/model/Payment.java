@@ -3,6 +3,8 @@ package org.hsbc.model;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.ws.rs.BadRequestException;
+
 /**
  * A singleton class to store and record payments.
  */
@@ -16,6 +18,13 @@ public class Payment {
 
     public static Payment getInstance() {
         return instance;
+    }
+
+    public void resetPayments() {
+        if (payments.isEmpty()) {
+            throw new BadRequestException("no payments to reset");
+        }
+        payments.clear();
     }
 
     public void recordPayment(String currency, Double amount) {

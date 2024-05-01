@@ -14,6 +14,11 @@ public class PaymentService {
 
     private Payment payment = Payment.getInstance();
 
+    public void resetPayments() {
+        payment.resetPayments();
+    }
+
+
     public void recordPayment(String currency, Double amount) {
         payment.recordPayment(currency, amount);
     }
