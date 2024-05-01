@@ -1,10 +1,10 @@
 ## Requirements
 - Maven
-- openjdk version "19.0.2"
+- openjdk version >= "19.0.2"
 
 ## Steps to run this application
 
-navigate to root of the project diur. Once you are in the root of the dir execute `ls` to confirm you see the following output.
+Navigate to root of the project dir. Once you are in the root of the dir execute `ls` to confirm you see the following output.
 ```
 payment-recorder % ls
 README.md       pom.xml         src             target
@@ -24,10 +24,20 @@ Server started at: http://localhost:3000
 
 ## How to use this application
 
-- Make a post request to http://localhost:3000/CAD/100.
-- You should receive the following
+### POST /payment/currencyCode/Amount
 
-![alt text](<Screen Shot 2024-04-30 at 11.33.23 PM.png>)
+- Make a post request to http://159.203.49.211/api/payment/hkd/200
+- You should receive the following
+```
+{CAD=100}
+```
+
+### GET /reset-transactions
+
+- Make a get request to http://159.203.49.211/api/reset-transactions
+- If there are tracked payments then this will reset all recorded payments currently tracked and return `200` with the message `Transactions reset`
+- If there are no tracked payments this route will return `400` with the message `no payments to reset`
+
 
 ## Assumptions made
 
