@@ -46,9 +46,10 @@ There are 2 routes in this application
 ## Assumptions made
 
 1. Currency code is defined as a 3 character string ignoring case i.e `cad and CAD are treated the same`. 
-2. Tracked amount for a currency is always >= 0.
+2. Tracked amount for a currency is defined as a Double and is always >= 0.
     1. If user tries to subtract an amount greater than what is currently tracked for a given currency application throws an error
-3. Tracked amount is always < 50,000
-    1. If user tries to increase the amount past 50,000 application throws an error
+3. Tracked amount is always < 50,000.00
+    1. If user tries to increase the amount past 50,000.00 application throws an error
 4. If there is no tracked amount for a currency then application will not allow user to input 0 for said currency.
-5. If there is no currency tracked there will be no output in the console.
+5. Tracked amount is displayed to users without decimal points
+6. If there is no currency tracked there will be no output in the console.
