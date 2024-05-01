@@ -22,7 +22,7 @@ starting to log payments...
 Server started at: http://localhost:3000
 ```
 
-If for some reason you are still unable to run the application. I have deployed the backend application on the URL http://159.203.49.211/api/
+If for some reason you are still unable to run the application. I have deployed the backend application on the URL http://159.203.49.211/
 
 ## How to use this application
 
